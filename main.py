@@ -2,6 +2,7 @@
 import cv2
 import tensorflow.python.keras
 import numpy as np
+import time
 
 
 ## 이미지 전처리
@@ -31,7 +32,7 @@ capture = cv2.VideoCapture(0)
 capture.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
 capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
 
-product_cnt = 1  # 3초간 제품을 인식할 변수
+sleep_cnt = 1  # 3초간 제품을 인식할 변수
 while True:
     ret, frame = capture.read()
     if ret == True:
@@ -54,8 +55,16 @@ while True:
     prediction = model.predict(preprocessed)
     # print(prediction) # [[0.00533728 0.99466264]]
     print(prediction)
+    print(prediction[0, 0])
+    print(prediction[0, 1])
+    print(prediction[0, 2])
+    print(prediction[0, 3])
+    print(prediction[0, 4])
+
+    time.sleep(1)
+
     if prediction[0, 0] > 0.94:
-        #print('(코카콜라)인식중')
+        print('(코카콜라)인식중')
         sleep_cnt += 1
         print(prediction[0, 0])
 
@@ -69,7 +78,7 @@ while True:
         sleep_cnt = 1
 
     elif prediction[0, 2] > 0.94:
-        #print('(팹시)인식중')
+        print('(팹시)인식중')
         sleep_cnt += 1
         print(prediction[0, 2])
 
@@ -79,7 +88,7 @@ while True:
             print('펩시')
             break  ## 1번만 알람이 오면 프로그램을 정지 시킴 (반복을 원한다면, 주석으로 막기!)
     elif prediction[0, 3] > 0.94:
-        #print('(스프라이트)인식중')
+        print('(스프라이트)인식중')
         sleep_cnt += 1
 
         # 졸린 상태가 30초간 지속되면 소리 & 카카오톡 보내기
@@ -88,7 +97,7 @@ while True:
             print('스프라이트')
             break  ## 1번만 알람이 오면 프로그램을 정지 시킴 (반복을 원한다면, 주석으로 막기!)
     elif prediction[0, 4] > 0.94:
-        #print('(베리베리스트로베리)인식중')
+        print('(베리베리스트로베리)인식중')
         sleep_cnt += 1
 
         # 졸린 상태가 30초간 지속되면 소리 & 카카오톡 보내기
