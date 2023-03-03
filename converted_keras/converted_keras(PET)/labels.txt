@@ -1,0 +1,5 @@
+0 None(BackGround)
+1 None(Hand)
+2 스프라이트 PET
+3 코카콜라 PET
+4 펩시 PET
