@@ -187,7 +187,7 @@ while True:
                 product_name = "스프라이트"
                 print('(' + product_name + ') 페트병 인식중')
                 sleep_cnt += 1
-                print(prediction_can[0, 2])
+                print(prediction_pet[0, 2])
 
                 if product_name != product_check:
                     product_check = product_name
@@ -202,7 +202,7 @@ while True:
                 product_name = "코카콜라"
                 print('(' + product_name + ') 페트병 인식중')
                 sleep_cnt += 1
-                print(prediction_can[0, 3])
+                print(prediction_pet[0, 3])
 
                 if product_name != product_check:
                     product_check = product_name
@@ -217,7 +217,7 @@ while True:
                 product_name = "펩시"
                 print('(' + product_name + ') 페트병 인식중')
                 sleep_cnt += 1
-                print(prediction_can[0, 4])
+                print(prediction_pet[0, 4])
 
                 if product_name != product_check:
                     product_check = product_name
