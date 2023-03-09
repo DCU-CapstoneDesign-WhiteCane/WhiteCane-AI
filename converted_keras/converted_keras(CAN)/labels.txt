@@ -1,5 +1,0 @@
-0 None(BackGround)
-1 None(Hand)
-2 스프라이트 캔
-3 코카콜라 캔
-4 펩시 캔
