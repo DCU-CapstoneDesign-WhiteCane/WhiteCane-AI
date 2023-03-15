@@ -2,7 +2,7 @@
 import logging
 
 import cv2
-import tensorflow.python.keras
+from keras.models import load_model
 import numpy as np
 import time
 
@@ -22,10 +22,8 @@ def preprocessing(frame):
     return frame_reshaped
 
 
-## 학습된 FORM 모델 불러오기
-path = r'C:\Users\kgd39\PycharmProjects\AI-Test\converted_keras\keras_model.h5'
-model_filename = path
-model = tensorflow.keras.models.load_model(model_filename)
+## 학습된 모델 불러오기
+model = load_model("converted_keras\keras_model.h5", compile=False)
 
 # 카메라 캡쳐 객체, 0 = 내장 카메라
 capture = cv2.VideoCapture(0)
@@ -92,7 +90,6 @@ while True:
             sleep_cnt = 0
 
         if sleep_cnt == 3:
-            print(product_name + "으로 인식")
             break
 
     # 코카콜라 CAN(으)로 판별
@@ -106,7 +103,6 @@ while True:
             sleep_cnt = 0
 
         if sleep_cnt == 3:
-            print(product_name + "으로 인식")
             break
 
     # 펩시 PET(으)로 판별
@@ -120,7 +116,6 @@ while True:
             sleep_cnt = 0
 
         if sleep_cnt == 3:
-            print(product_name + "으로 인식")
             break
 
     # 펩시 CAN(으)로 판별
@@ -134,14 +129,13 @@ while True:
             sleep_cnt = 0
 
         if sleep_cnt == 3:
-            print(product_name + "으로 인식")
             break
 
     else:
         print('제품을 인식할 수 없습니다.')
         sleep_cnt = 0
 
-print(product_name)
+print(product_name + "으로 인식")
 # 카메라 객체 반환
 capture.release()
 # 화면에 나타난 윈도우들을 종료
