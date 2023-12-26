@@ -1,6 +1,0 @@
-0 None(BackGround)
-1 None(Hand)
-2 코카콜라 PET
-3 코카콜라 캔
-4 펩시 PET
-5 펩시 캔
